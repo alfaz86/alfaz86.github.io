@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <title>My Portfolio | Muhammad Alfaz</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+  <body id="home">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-mynavbar shadow-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="img/my-white-no-alpha.png" alt="logo-alfaz" style="max-width: 75px" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Jumbroton -->
+    <section class="jumbotron text-center">
+      <img src="img/alfaz.jpeg" alt="Muhammad Alfaz" width="250" class="rounded-circle img-fluid img-my-thumbnail" />
+      <h1 class="display-4">Muhammad Alfaz</h1>
+      <p class="lead">College Student | Web Developer</p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#ffffff"
+          fill-opacity="1"
+          d="M0,160L48,165.3C96,171,192,181,288,160C384,139,480,85,576,80C672,75,768,117,864,149.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+    <!-- End Jumbroton -->
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2>About Me</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center fs-5">
+          <div class="col-md-5 mb-3 text-center">
+            Nama Saya Muhammad Alfaz. Salah satu orang random yang hidup di akhir zaman. Hobi Saya <span class="text-primary">menggambar</span> <i class="bi bi-brush text-primary"></i> dan bermain <span class="text-danger">game</span>
+            <i class="bi bi-controller text-danger"></i>. Tidak ada yang istimewa dari kehidupan Saya dan Saya lebih suka menghabiskan waktu sendirian tanpa adanya gannguan orang random lainnya.
+          </div>
+          <div class="col-md-5 mb-3 text-center">
+            Saya mahasiswa jurusan Teknik Informatika dari kampus <span class="text-warning">STMIK Sumedang</span> dan Saya masih menjadi seorang web developer pemula. Semoga kedepannya Saya bisa meningkatkan Skill programming saya menjadi
+            programmer yang lebih handal.
+          </div>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#dfdfe2"
+          fill-opacity="1"
+          d="M0,160L48,165.3C96,171,192,181,288,197.3C384,213,480,235,576,218.7C672,203,768,149,864,138.7C960,128,1056,160,1152,176C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+    <!-- End About -->
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container pb-5">
+        <div class="row text-center mb-5">
+          <div class="col">
+            <h2>My Projects</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card shadow-sm ta-justify" style="width: auto; border-radius: 0%">
+              <div class="p-2">
+                <div class="parent">
+                  <div class="child">
+                    <img src="img/projects/1.png" class="card-img-top" alt="projects pos-bangunan" />
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  POS Bangunan adalah aplikasi khusus untuk produk yang berkaitan dengan bahan bangunan. Aplikasi ini bisa digunakan untuk kasir dan rekap data produk suatu usaha. Anda bisa melihat demo aplikasi ini dengan mengklik tombol
+                  <a href="https://www.instagram.com/p/CPlWo1Qg1gC/" target="_blank">ini</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card shadow-sm ta-justify" style="width: auto; border-radius: 0%">
+              <div class="p-2">
+                <div class="parent">
+                  <div class="child">
+                    <img src="img/projects/2.png" class="card-img-top" alt="projects diperta sumedang" />
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Website ini bernama web diperta. Website diperta berisi informasi tentang pertanian dan pangan yang ada di daerah kabupaten sumedang. Anda bisa melihatnya dengan mengklik
+                  <a href="https://diperta.sumedangkab.go.id/" target="_blank">https://diperta.sumedangkab.go.id</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card shadow-sm ta-justify" style="width: auto; border-radius: 0%">
+              <div class="p-2">
+                <div class="parent">
+                  <div class="child">
+                    <img src="img/projects/3.png" class="card-img-top" alt="projects silpakami sumedang" />
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  <a href="https://silpakami.sumedangkab.go.id/">Silpakami</a> merupakan suatu Aplikasi layanan persandian dan keamanan informasi dalam penerapan sertifikat elektronik yang meliputi (Pendaftaran Sertifikat Elektronik,
+                  Perubahan Data Sertifikat Elektronik, Pencabutan Sertifikat Elektronik), Layanan Jamming (Layanan Jamming Rapat Dinas Pimpinan dan Rapat Dinas Perangkat Daerah), Layanan Insiden Handling Keamanan Informasi dalam mendukung
+                  efektivitas pelayanan publik.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#1B1B32"
+          fill-opacity="1"
+          d="M0,224L60,234.7C120,245,240,267,360,256C480,245,600,203,720,202.7C840,203,960,245,1080,256C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+    <!-- End Projects -->
+
+    <!-- Contact -->
+    <section id="contact" class="pb-5">
+      <div class="container">
+        <div class="row text-center mb-5 text-white">
+          <div class="col">
+            <h2>Contact Me</h2>
+          </div>
+        </div>
+        <div class="row text-white justify-content-center">
+          <div class="col-md-4 mb-3">
+            <p><i class="bi bi-facebook"></i> &nbsp;<a href="https://www.facebook.com/muhammad.alfaz.37" class="text-white">Muhammad Al Faz</a></p>
+            <p><i class="bi bi-instagram"></i> &nbsp;<a href="https://www.instagram.com/muh_alfaz_/" class="text-white">muh_alfaz_</a></p>
+            <p><i class="bi bi-twitter"></i> &nbsp;<a href="https://twitter.com/MAlfaz18" class="text-white">Mbos_ae</a></p>
+          </div>
+          <div class="col-md-4">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="email" />
+              </div>
+              <div class="mb-3">
+                <label for="comment">Comments</label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px"></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact -->
+
+    <!-- Footer -->
+    <footer class="bg-myfooter text-center pt-3 pb-2 text-white">
+      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://github.com/alfaz86" class="text-warning">Muhammad Alfaz</a></p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.nav-link').click(function (event) {
+          $('.nav-link ').removeClass(' active');
+          $(this).addClass(' active');
+        });
+      });
+    </script>
+  </body>
+</html>
