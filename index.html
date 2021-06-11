@@ -180,20 +180,28 @@
             <p><i class="bi bi-twitter"></i> &nbsp;<a href="https://twitter.com/MAlfaz18" class="text-white">Mbos_ae</a></p>
           </div>
           <div class="col-md-4">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show mt-2 d-none my-alert" role="alert">
+              <strong>Tanks!</strong> Pesan Anda telah kami terima.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="submit-to-google-sheet">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" required />
               </div>
               <div class="mb-3">
                 <label for="comment">Comments</label>
-                <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px" name="pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-secondary">Submit</button>
+              <button type="submit" id="btn-submit" class="btn btn-secondary">Submit</button>
+              <button id="btn-loading" class="btn btn-secondary d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
         </div>
@@ -209,6 +217,29 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzZq7ViXdiHm42PtFH-CJ3F5a7phqsj62pVfhlbqf-_9PWXLJ4gmCy5IfgU2tGzP0M1/exec';
+      const form = document.forms['submit-to-google-sheet'];
+      const btnSubmit = document.querySelector('#btn-submit');
+      const btnLoading = document.querySelector('#btn-loading');
+      const myAlert = document.querySelector('.my-alert');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        btnLoading.classList.toggle('d-none');
+        btnSubmit.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            btnLoading.classList.toggle('d-none');
+            btnSubmit.classList.toggle('d-none');
+            myAlert.classList.toggle('d-none');
+            form.reset();
+            console.log('Success!', response);
+          })
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
 
     <script>
       $(document).ready(function () {
