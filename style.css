@@ -93,3 +93,19 @@ a:link {
 a:hover {
   text-decoration: underline;
 }
+
+#map {
+  height: 100%;
+}
+
+@media only screen and (min-width: 401px) {
+  .div-h {
+    height: 80vh;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .div-h {
+    height: 50vh;
+  }
+}
