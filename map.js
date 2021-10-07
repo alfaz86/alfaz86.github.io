@@ -8,3 +8,5 @@ const myaddress = { "lat": -6.850637, "lng": 108.016114},
 tiles.addTo(map);
 marker.addTo(map);
 marker.bindPopup("Jln. Situraja-Cikadu No.11 dsn.Cilimus 01/02 ds.Mekarmulya").openPopup();
+
+L.Browser.retina ? true : false;
