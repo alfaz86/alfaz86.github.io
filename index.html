@@ -20,13 +20,22 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <title>My Portfolio | Muhammad Alfaz</title>
+    <link rel="shortcut icon" href="/img/icon.png">
+
+    <!-- Link Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="/script.js"></script>
   </head>
   <body id="home">
+    <button onclick="topFunction()" id="toTop" title="Go to top"><i class="bi bi-caret-up-fill"></i></button>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-mynavbar shadow-sm fixed-top">
       <div class="container">
@@ -43,10 +52,13 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
+              <a class="nav-link" href="#skills">Skills</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#address">Address</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
@@ -58,48 +70,219 @@
     <!-- End Navbar -->
 
     <!-- Jumbroton -->
-    <section class="jumbotron text-center">
-      <img src="img/alfaz.jpeg" alt="Muhammad Alfaz" width="250" class="rounded-circle img-fluid img-my-thumbnail" />
-      <h1 class="display-4">Muhammad Alfaz</h1>
-      <p class="lead">College Student <span class="continue-lead"></span></p>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#ffffff"
-          fill-opacity="1"
-          d="M0,160L48,165.3C96,171,192,181,288,160C384,139,480,85,576,80C672,75,768,117,864,149.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
+    <section class="jumbotron">
+      <div class="row m-0">
+        <div class="col-md-6 text-center">
+          <img src="img/alfaz.jpeg" alt="Muhammad Alfaz" width="340" class="img-my-thumbnail box" />
+        </div>
+        <div class="col-md-6 maint-text">
+          <h1 class="display-4 text-content pt-2" >Hi,</h1>
+          <h1 class="display-4">I'm Muhammad Alfaz</h1>
+          <p class="lead">College Student <span class="continue-lead"></span></p>
+          <div class="social-media mb-3">
+            <span class="badge bg-white shadow mb-1">
+              <a href="https://www.instagram.com/muh_alfaz_/" style="text-decoration-color: black;"><i class="bi bi-instagram color-ig"></i><p class="text-dark d-inline"> Instagram</p></a>
+            </span>
+            <span class="badge bg-white shadow mb-1">
+              <a href="https://twitter.com/MAlfaz18" style="text-decoration-color: black;"><i class="bi bi-twitter color-tw"></i><p class="text-dark d-inline"> Twitter</p></a>
+            </span>
+            <span class="badge bg-white shadow mb-1">
+              <a href="https://www.facebook.com/muhammad.alfaz.37" style="text-decoration-color: black;"><i class="bi bi-facebook color-fb"></i><p class="text-dark d-inline"> Facebook</p></a>
+            </span>
+            <span class="badge bg-white shadow mb-1">
+              <a href="https://github.com/alfaz86" style="text-decoration-color: black;"><i class="bi bi-github colot-git"></i><p class="text-dark d-inline"> Github</p></a>
+            </span>
+          </div>
+          <button type="button" class="btn btn-outline-dark shadow-sm" onclick="window.location.href='#about'">Hire Me</button>
+          <button type="button" class="btn btn-outline-light shadow-sm" onclick="window.location.href='#contact'">Contact</button>
+        </div>
+      </div>
+      <svg id="jumbot-wave" viewBox="0 0 900 200">
+        <path d="M0 68L15 67.7C30 67.3 60 66.7 90 63.5C120 60.3 150 54.7 180 56.5C210 58.3 240 67.7 270 70C300 72.3 330 67.7 360 66.5C390 65.3 420 67.7 450 72.5C480 77.3 510 84.7 540 87C570 89.3 600 86.7 630 86C660 85.3 690 86.7 720 83C750 79.3 780 70.7 810 66.2C840 61.7 870 61.3 885 61.2L900 61L900 201L885 201C870 201 840 201 810 201C780 201 750 201 720 201C690 201 660 201 630 201C600 201 570 201 540 201C510 201 480 201 450 201C420 201 390 201 360 201C330 201 300 201 270 201C240 201 210 201 180 201C150 201 120 201 90 201C60 201 30 201 15 201L0 201Z" fill="#dfdfe2" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 137L15 133C30 129 60 121 90 115.3C120 109.7 150 106.3 180 107.5C210 108.7 240 114.3 270 118.3C300 122.3 330 124.7 360 123.2C390 121.7 420 116.3 450 112.7C480 109 510 107 540 109.5C570 112 600 119 630 119.3C660 119.7 690 113.3 720 107.2C750 101 780 95 810 99.2C840 103.3 870 117.7 885 124.8L900 132L900 201L885 201C870 201 840 201 810 201C780 201 750 201 720 201C690 201 660 201 630 201C600 201 570 201 540 201C510 201 480 201 450 201C420 201 390 201 360 201C330 201 300 201 270 201C240 201 210 201 180 201C150 201 120 201 90 201C60 201 30 201 15 201L0 201Z" fill="#efeff0" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 165L15 160.3C30 155.7 60 146.3 90 141.3C120 136.3 150 135.7 180 134.7C210 133.7 240 132.3 270 133.7C300 135 330 139 360 145.8C390 152.7 420 162.3 450 164C480 165.7 510 159.3 540 157C570 154.7 600 156.3 630 156.3C660 156.3 690 154.7 720 151.5C750 148.3 780 143.7 810 144C840 144.3 870 149.7 885 152.3L900 155L900 201L885 201C870 201 840 201 810 201C780 201 750 201 720 201C690 201 660 201 630 201C600 201 570 201 540 201C510 201 480 201 450 201C420 201 390 201 360 201C330 201 300 201 270 201C240 201 210 201 180 201C150 201 120 201 90 201C60 201 30 201 15 201L0 201Z" fill="#ffffff" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
       </svg>
     </section>
     <!-- End Jumbroton -->
 
     <!-- About -->
     <section id="about">
-      <div class="container">
+      <div class="container-fluid div-about pb-5">
         <div class="row text-center mb-5">
           <div class="col" data-aos="fade-up">
             <h2>About Me</h2>
           </div>
         </div>
-        <div class="row justify-content-center fs-5">
-          <div class="col-md-5 mb-3 text-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="row justify-content-center align-items-center fs-5">
+          <div class="col-md-5 mb-5 text-center" data-aos="fade-up" data-aos-delay="150">
+            <div class="w-100 h-100">
+              <img src="/svg/art-design.svg" alt="art-design" style="max-width: 70%" />
+            </div>
+          </div>
+          <div class="col-md-5 mb-5" style="text-align: justify;" data-aos="fade-up" data-aos-delay="150">
             Nama Saya Muhammad Alfaz. Salah satu orang random yang hidup di akhir zaman. Hobi Saya <span class="text-primary">menggambar</span> <i class="bi bi-brush text-primary"></i> dan bermain <span class="text-danger">game</span>
             <i class="bi bi-controller text-danger"></i>. Tidak ada yang istimewa dari kehidupan Saya dan Saya lebih suka menghabiskan waktu sendirian tanpa adanya gannguan orang random lainnya.
           </div>
-          <div class="col-md-5 mb-3 text-center" data-aos="fade-up" data-aos-delay="150">
-            Saya mahasiswa jurusan Teknik Informatika dari kampus <span class="text-warning">STMIK Sumedang</span> dan Saya masih menjadi seorang web developer pemula. Semoga kedepannya Saya bisa meningkatkan Skill programming saya menjadi
-            programmer yang lebih handal.
+          <div class="col-md-5 mb-5 text-center" data-aos="fade-up" data-aos-delay="150" id="college1">
+            <div class="w-100">
+              <img src="/svg/college.svg" alt="art-design" style="max-width: 70%" />
+            </div>
+          </div>
+          <div class="col-md-5 mb-5" style="text-align: justify;" data-aos="fade-up" data-aos-delay="150">
+            Saya mahasiswa jurusan Teknik Informatika dari kampus <span class="text-warning">STMIK Sumedang</span> dan Saya masih menjadi seorang web developer pemula. Semoga kedepannya Saya bisa meningkatkan Skill programming saya
+            menjadi programmer yang lebih handal.
+          </div>
+          <div class="col-md-5 mb-5 text-center" data-aos="fade-up" data-aos-delay="150" id="college2">
+            <div class="w-100">
+              <img src="/svg/college.svg" alt="art-design" style="max-width: 70%" />
+            </div>
           </div>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#dfdfe2"
-          fill-opacity="1"
-          d="M0,160L48,165.3C96,171,192,181,288,197.3C384,213,480,235,576,218.7C672,203,768,149,864,138.7C960,128,1056,160,1152,176C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
+      <svg viewBox="0 0 900 200">
+        <path d="M0 56L25 58.8C50 61.7 100 67.3 150 66.5C200 65.7 250 58.3 300 57.2C350 56 400 61 450 64C500 67 550 68 600 70.5C650 73 700 77 750 76.8C800 76.7 850 72.3 875 70.2L900 68L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#f4f4f5" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 89L25 94C50 99 100 109 150 114.7C200 120.3 250 121.7 300 116.3C350 111 400 99 450 95.2C500 91.3 550 95.7 600 102.7C650 109.7 700 119.3 750 123.7C800 128 850 127 875 126.5L900 126L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#eaeaeb" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 147L25 147.5C50 148 100 149 150 150.2C200 151.3 250 152.7 300 155.2C350 157.7 400 161.3 450 162.3C500 163.3 550 161.7 600 157.5C650 153.3 700 146.7 750 141.8C800 137 850 134 875 132.5L900 131L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#dfdfe2" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
       </svg>
     </section>
     <!-- End About -->
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container pb-5">
+        <div class="row text-center mb-5">
+          <div class="col" data-aos="fade-up">
+            <h2>Skills</h2>
+          </div>
+        </div>
+        <div class="container p-5" id="container-row-skills">
+          <div class="row justify-content-center">
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/html.svg.png" alt="html">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3><a href="https://id.wikipedia.org/wiki/HTML5">HTML</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/css.svg.png" alt="css">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3><a href="https://id.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/bootstrap.svg.png" alt="bootstrap">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3> <a href="https://getbootstrap.com">Bootstrap</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/javascript.svg.png" alt="javascript">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3>JavaScript</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/jquery.svg.png" alt="jquery">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3>JQuery</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/php.svg.png" alt="php">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3>PHP</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/laravel.svg.png" alt="laravel">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3>Laravel</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-mini col-sm-4 col-xl-3 mb-3">
+              <div class="card shadow-sm ta-justify" data-aos="fade-up" data-aos-delay="250">
+                <div class="card-body m-auto">
+                  <div class="card-skill">
+                    <img src="/img/skills/adobe_illustrator.png" alt="adobe_illustrator">
+                  </div>
+                  <div class="text-center text-skill">
+                    <h3>Adobe Illustrator</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg viewBox="0 0 900 200">
+        <path d="M0 100L21.5 96.2C43 92.3 86 84.7 128.8 84.7C171.7 84.7 214.3 92.3 257.2 94.2C300 96 343 92 385.8 95.5C428.7 99 471.3 110 514.2 107.8C557 105.7 600 90.3 642.8 83.3C685.7 76.3 728.3 77.7 771.2 82.8C814 88 857 97 878.5 101.5L900 106L900 201L878.5 201C857 201 814 201 771.2 201C728.3 201 685.7 201 642.8 201C600 201 557 201 514.2 201C471.3 201 428.7 201 385.8 201C343 201 300 201 257.2 201C214.3 201 171.7 201 128.8 201C86 201 43 201 21.5 201L0 201Z" fill="#eaeaeb" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 128L21.5 125.3C43 122.7 86 117.3 128.8 115C171.7 112.7 214.3 113.3 257.2 116.7C300 120 343 126 385.8 127.2C428.7 128.3 471.3 124.7 514.2 125.5C557 126.3 600 131.7 642.8 134C685.7 136.3 728.3 135.7 771.2 136C814 136.3 857 137.7 878.5 138.3L900 139L900 201L878.5 201C857 201 814 201 771.2 201C728.3 201 685.7 201 642.8 201C600 201 557 201 514.2 201C471.3 201 428.7 201 385.8 201C343 201 300 201 257.2 201C214.3 201 171.7 201 128.8 201C86 201 43 201 21.5 201L0 201Z" fill="#f4f4f5" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 174L21.5 171.2C43 168.3 86 162.7 128.8 162.3C171.7 162 214.3 167 257.2 169C300 171 343 170 385.8 167C428.7 164 471.3 159 514.2 158.3C557 157.7 600 161.3 642.8 160.7C685.7 160 728.3 155 771.2 156.3C814 157.7 857 165.3 878.5 169.2L900 173L900 201L878.5 201C857 201 814 201 771.2 201C728.3 201 685.7 201 642.8 201C600 201 557 201 514.2 201C471.3 201 428.7 201 385.8 201C343 201 300 201 257.2 201C214.3 201 171.7 201 128.8 201C86 201 43 201 21.5 201L0 201Z" fill="#ffffff" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+      </svg>
+    </section>
+    <!-- End Skills -->
+
+    <!-- Address -->
+    <section id="address">
+      <div class="container pb-5 mb-5">
+        <div class="row text-center mb-5">
+          <div class="col" data-aos="fade-up">
+            <h2>My Address</h2>
+          </div>
+        </div>
+        <div class="justify-content-center w-100 div-h" data-aos="fade-up">
+          <div id="map"></div>
+        </div>
+      </div>
+      <svg viewBox="0 0 900 200">
+        <path d="M0 72L25 70.2C50 68.3 100 64.7 150 65C200 65.3 250 69.7 300 68.5C350 67.3 400 60.7 450 64.7C500 68.7 550 83.3 600 83.3C650 83.3 700 68.7 750 62C800 55.3 850 56.7 875 57.3L900 58L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#f4f4f5" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 121L25 119.5C50 118 100 115 150 115.3C200 115.7 250 119.3 300 122.7C350 126 400 129 450 130.8C500 132.7 550 133.3 600 125.8C650 118.3 700 102.7 750 102.5C800 102.3 850 117.7 875 125.3L900 133L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#eaeaeb" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+        <path d="M0 159L25 160.2C50 161.3 100 163.7 150 163.3C200 163 250 160 300 157.5C350 155 400 153 450 153.3C500 153.7 550 156.3 600 156.2C650 156 700 153 750 148.7C800 144.3 850 138.7 875 135.8L900 133L900 201L875 201C850 201 800 201 750 201C700 201 650 201 600 201C550 201 500 201 450 201C400 201 350 201 300 201C250 201 200 201 150 201C100 201 50 201 25 201L0 201Z" fill="#dfdfe2" style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0s;"></path>
+      </svg>
+    </section>
+    <!-- End Address -->
 
     <!-- Projects -->
     <section id="projects">
@@ -164,37 +347,8 @@
           </div>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#ffffff"
-          fill-opacity="1"
-          d="M0,224L60,234.7C120,245,240,267,360,256C480,245,600,203,720,202.7C840,203,960,245,1080,256C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-        ></path>
-      </svg>
     </section>
     <!-- End Projects -->
-
-    <!-- Address -->
-    <section id="address">
-      <div class="container pb-5">
-        <div class="row text-center mb-5">
-          <div class="col" data-aos="fade-up">
-            <h2>My Address</h2>
-          </div>
-        </div>
-        <div class="justify-content-center w-100 div-h">
-          <div id="map"></div>
-        </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#1B1B32"
-          fill-opacity="1"
-          d="M0,224L60,234.7C120,245,240,267,360,256C480,245,600,203,720,202.7C840,203,960,245,1080,256C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-        ></path>
-      </svg>
-    </section>
-    <!-- End Address -->
 
     <!-- Contact -->
     <section id="contact" class="pb-5">
@@ -206,9 +360,10 @@
         </div>
         <div class="row text-white justify-content-center">
           <div class="col-md-4 mb-3">
-            <p><i class="bi bi-facebook"></i> &nbsp;<a href="https://www.facebook.com/muhammad.alfaz.37" class="text-white">Muhammad Al Faz</a></p>
-            <p><i class="bi bi-instagram"></i> &nbsp;<a href="https://www.instagram.com/muh_alfaz_/" class="text-white">muh_alfaz_</a></p>
-            <p><i class="bi bi-twitter"></i> &nbsp;<a href="https://twitter.com/MAlfaz18" class="text-white">Mbos_ae</a></p>
+            <p><i class="bi bi-envelope "></i> &nbsp;<a href="mailto:ujangmbos@gmail.com" class="text-white">ujangmbos@gmail.com</a></p>
+            <p><i class="bi bi-whatsapp"></i> &nbsp;<a href="https://wa.me/6285334663520" class="text-white">wa.me</a></p>
+            <p class="text-white"><i class="bi bi-discord"></i> &nbsp;aLfAz#5523</p>
+            <p class="text-white"><i class="bi bi-telephone"></i> &nbsp;+62 853 3466 3520</p>
           </div>
           <div class="col-md-4">
             <div class="alert alert-success alert-dismissible fade show mt-2 d-none my-alert" role="alert">
@@ -249,42 +404,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF5FD2Zy-mzeZcSwaN9Gp0L48GsM6KItw&callback=initMap&libraries=&v=weekly" async></script>
-
-    <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzZq7ViXdiHm42PtFH-CJ3F5a7phqsj62pVfhlbqf-_9PWXLJ4gmCy5IfgU2tGzP0M1/exec';
-      const form = document.forms['submit-to-google-sheet'];
-      const btnSubmit = document.querySelector('#btn-submit');
-      const btnLoading = document.querySelector('#btn-loading');
-      const myAlert = document.querySelector('.my-alert');
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        btnLoading.classList.toggle('d-none');
-        btnSubmit.classList.toggle('d-none');
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then((response) => {
-            btnLoading.classList.toggle('d-none');
-            btnSubmit.classList.toggle('d-none');
-            myAlert.classList.toggle('d-none');
-            form.reset();
-            console.log('Success!', response);
-          })
-          .catch((error) => console.error('Error!', error.message));
-      });
-    </script>
-
-    <script>
-      $(document).ready(function () {
-        $('.nav-link').click(function (event) {
-          $('.nav-link ').removeClass(' active');
-          $(this).addClass(' active');
-        });
-        $('.navbar-brand').click(function (event) {
-          $('.nav-link ').removeClass(' active');
-        });
-      });
-    </script>
+    <script src="/form.js"></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -300,16 +420,16 @@
         delay: 2,
         text: ' | Web Developer',
       });
-      gsap.from('.jumbotron img', {
-        duration: 1.5,
+      gsap.from('.text-content', {
+        duration: 1.3,
+        y: -200,
         opacity: 0,
-      });
-      gsap.from('.jumbotron h1', {
-        duration: 1.5,
-        x: -200,
-        opacity: 0,
-        ease: 'back',
+        ease: 'bounce',
       });
     </script>
+
+    <script src="/script.js"></script>
+
+    <script src="/map.js"></script>
   </body>
 </html>
