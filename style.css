@@ -144,15 +144,6 @@ a:hover {
 }
 
 @media only screen and (max-width: 450px) {
-  .jumbotron {
-    height: 100vh;
-  }
-
-  #jumbot-wave {
-    position: absolute;
-    bottom: -10px;
-  }
-
   .div-h {
     height: 50vh;
   }
