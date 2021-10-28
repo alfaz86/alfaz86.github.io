@@ -3,18 +3,35 @@ $(document).ready(function () {
     $('.nav-link ').removeClass(' active');
     $(this).addClass(' active');
   });
+
   $('.navbar-brand').click(function (event) {
     $('.nav-link ').removeClass(' active');
   });
+  
   $('#toTop').click(function (event) {
     $('.nav-link ').removeClass(' active');
   });
+
   $('.leaflet-popup-content-wrapper').css("border-radius", "5px");
   $('.leaflet-popup-tip').hide();
+
   let card_skill = $('.card.shadow-sm.ta-justify');
   $.each(card_skill, function (index, value) {
     let duration = Number(index) * 50;
     $(value).attr("data-aos-delay", duration);
+  });
+
+  $('.nav-item.dropdown').click(function (event) {
+    let check = $(this).attr("class");
+    if (check == "nav-item dropdown") {
+      $(this).addClass(' show');
+      $('.dropdown-menu.dropdown-menu-end').addClass(' show');
+      $('.nav-link.dropdown-toggle').attr('aria-expanded', true);
+    } else {
+      $(this).removeClass(' show');
+      $('.dropdown-menu.dropdown-menu-end').removeClass(' show');
+      $('.nav-link.dropdown-toggle').attr('aria-expanded', false);
+    }
   });
 });
 
