@@ -12,7 +12,7 @@ let startApp = function () {
             cookiepolicy: 'single_host_origin',
         });
         attachSignin(document.getElementById('customBtn'));
-        if (readCookie('G_AUTHUSER_H') == '') {
+        if (readCookie('__google_auth') == '') {
             attachSignin(document.getElementById('btn-outline-like'));
         }
     });
@@ -26,6 +26,7 @@ function attachSignin(element) {
             document.getElementById('g_name').innerText = googleUser.getBasicProfile().getName();
             $('.btn-login').attr('hidden',true);
             $('.btn-login-label').attr('hidden',false);
+            writeCookie('__google_auth', readCookie('G_AUTHUSER_H'), 0.5);
             chk_log();
             setTimeout(function () { 
                 console.log(document.cookie, profile); 
@@ -42,7 +43,7 @@ function signOut() {
     auth2.signOut().then(function () {
         $('.btn-login').attr('hidden', false);
         $('.btn-login-label').attr('hidden', true);
-        writeCookie('G_AUTHUSER_H', '', 0.5);
+        writeCookie('__google_auth', '', 0.5);
         writeCookie('__email', '', 0.5);
         writeCookie('__name', '', 0.5);
         writeCookie('__liked', '', 0.5);
@@ -52,7 +53,7 @@ function signOut() {
 }
 
 function chk_log() {
-    if (readCookie('G_AUTHUSER_H') == '') {
+    if (readCookie('__google_auth') == '') {
         $('#logout').attr("hidden", true);
     } else {
         $('#logout').attr("hidden", false);

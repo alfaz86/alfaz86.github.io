@@ -16,7 +16,7 @@ function getLike(like = null){
                 if (row.LIKED == 1) {
                     liked += 1;
                 }
-                if (readCookie('G_AUTHUSER_H') == '') {
+                if (readCookie('__google_auth') == '') {
                     $('.bi.bi-hand-thumbs-up-fill').attr("class", "bi bi-hand-thumbs-up");
                     $('#like').html("Like " + liked)
                     $('#like-d').html("Like " + liked)
