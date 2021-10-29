@@ -37,6 +37,7 @@ function makeId(length) {
 
 if (readCookie('__sessionId') == '') {
     writeCookie('__sessionId', makeId(18), 0.5);
+    writeCookie('__google_auth', '', 0.5);
     writeCookie('__email', '', 0.5);
     writeCookie('__name', '', 0.5);
     writeCookie('__liked', '', 0.5);
