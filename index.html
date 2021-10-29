@@ -80,9 +80,13 @@
                 <a class="dropdown-item">
                   <div id="gSignInWrapper">
                     <span class="label"></span>
-                    <div id="customBtn" class="customGPlusSignIn">
+                    <div id="customBtn" class="customGPlusSignIn btn-login">
                       <span class="icon"></span>
-                      <span class="buttonText" id="g_name">SignIn Google</span>
+                      <span class="buttonText">SignIn Google</span>
+                    </div>
+                    <div class="btn-login-label" hidden>
+                      <span class="icon"></span>
+                      <span class="buttonText" id="g_name"></span>
                     </div>
                   </div>
                 </a>
@@ -472,5 +476,7 @@
     <script src="/js/like.js"></script>
 
     <script src="/js/crud.js"></script>
+
+    <script>console.log("document.cookie",document.cookie)</script>
   </body>
 </html>

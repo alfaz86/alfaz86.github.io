@@ -17,6 +17,7 @@ function getLike(like = null){
                     liked += 1;
                 }
                 if (readCookie('G_AUTHUSER_H') == '') {
+                    $('.bi.bi-hand-thumbs-up-fill').attr("class", "bi bi-hand-thumbs-up");
                     $('#like').html("Like " + liked)
                     $('#like-d').html("Like " + liked)
                 } else {
@@ -43,11 +44,13 @@ function sigIn(profile){
     let data = profile;
     if (data != null) {
         let url = script_url + "?action=read";
-        let reload = false;
         $.getJSON(url, function (json) {
             let arr = json.records;
+            let email = [];
             arr.forEach((value, index) => {
+                email.push(value.EMAIL);
                 if (data.Yt == value.EMAIL) {
+                    console.log("update");
                     update_value(data.Se, data.Yt, value.LIKED);
                     $('.bi.bi-hand-thumbs-up').attr("class", "bi bi-hand-thumbs-up-fill");
                     $('#like').html("Liked " + liked);
@@ -57,19 +60,19 @@ function sigIn(profile){
                     writeCookie('__name', data.Se, 0.5);
                     writeCookie('__liked', value.LIKED, 0.5);
                 }
-                if (data.Yt != value.EMAIL && index == (arr.length - 1)) {
-                    liked += 1;
-                    insert_value(data.Se, data.Yt, 1);
-                    $('.bi.bi-hand-thumbs-up').attr("class", "bi bi-hand-thumbs-up-fill");
-                    $('#like').html("Liked " + liked);
-                    $('#like-d').html("Liked " + liked);
-    
-                    writeCookie('__email', data.Yt, 0.5);
-                    writeCookie('__name', data.Se, 0.5);
-                    writeCookie('__liked', 1, 0.5);
-                }
-                if (index ==  arr.length - 1) reload = true;
             });
+            if (email.includes(data.Yt) === false) {
+                console.log("new user");
+                liked += 1;
+                insert_value(data.Se, data.Yt, 1);
+                $('.bi.bi-hand-thumbs-up').attr("class", "bi bi-hand-thumbs-up-fill");
+                $('#like').html("Liked " + liked);
+                $('#like-d').html("Liked " + liked);
+
+                writeCookie('__email', data.Yt, 0.5);
+                writeCookie('__name', data.Se, 0.5);
+                writeCookie('__liked', 1, 0.5);
+            }
         });
         $('#btn-outline-like').attr('hidden', true);
         $('#like-display').attr('hidden', false);
@@ -84,4 +87,10 @@ if (readCookie('__email') !== '') {
     $('#g_name').html(readCookie('__name'));
     $('#name').val(readCookie('__name'));
     $('#email').val(readCookie('__email'));
+
+    $('.btn-login').attr('hidden', true);
+    $('.btn-login-label').attr('hidden', false);
+} else {
+    $('.btn-login').attr('hidden', false);
+    $('.btn-login-label').attr('hidden', true);
 }
