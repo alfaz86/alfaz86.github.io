@@ -1,6 +1,5 @@
 function onSignIn(googleUser) {
     let profile = googleUser.getBasicProfile();
-    console.log("profile",profile);
     chk_log();
 }
 
@@ -28,9 +27,6 @@ function attachSignin(element) {
             $('.btn-login-label').attr('hidden',false);
             writeCookie('__google_auth', readCookie('G_AUTHUSER_H'), 0.5);
             chk_log();
-            setTimeout(function () { 
-                console.log(document.cookie, profile); 
-            }, 3000);
         }, function (error) {
             console.log(error);
             alert('Login gagal!');
