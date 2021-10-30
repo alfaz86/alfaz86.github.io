@@ -76,3 +76,10 @@ function windowMatches(x) {
 let x = window.matchMedia("(max-width: 767px)");
 windowMatches(x);
 x.addListener(windowMatches);
+
+window.addEventListener('scroll', (e) => {
+  let value = window.scrollY;
+  $('#parallax').css('transform', `translateY(${value * 0.4}px)`);
+  $('#path-1').css('transform', `translateY(${value * 0.1}px)`);
+  $('#path-2').css('transform', `translateY(${value * 0.05}px)`);
+});
