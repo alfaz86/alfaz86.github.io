@@ -1,85 +1,117 @@
-$(document).ready(function () {
-  $('.nav-link').click(function (event) {
-    $('.nav-link ').removeClass(' active');
-    $(this).addClass(' active');
-  });
+const contentElement = document.getElementById("content");
+const fetchButton = document.getElementById("fetchButton");
+let currentContent = "";
 
-  $('.navbar-brand').click(function (event) {
-    $('.nav-link ').removeClass(' active');
-  });
-  
-  $('#toTop').click(function (event) {
-    $('.nav-link ').removeClass(' active');
-  });
+function getContent(content = "about") {
+    if (currentContent === content) return;
 
-  $('.leaflet-popup-content-wrapper').css("border-radius", "5px");
-  $('.leaflet-popup-tip').hide();
+    const activeElement = document.querySelector('.active');
+    const currentNav = document.querySelector('.nav-link.menu.' + content);
+    const fileUrl = `../components/${content}.html`;
 
-  let card_skill = $('.card.shadow-sm.ta-justify');
-  $.each(card_skill, function (index, value) {
-    let duration = Number(index) * 50;
-    $(value).attr("data-aos-delay", duration);
-  });
+    activeElement.classList.remove('active');
 
-  $('.nav-item.dropdown').click(function (event) {
-    let check = $(this).attr("class");
-    if (check == "nav-item dropdown") {
-      $(this).addClass(' show');
-      $('.dropdown-menu.dropdown-menu-end').addClass(' show');
-      $('.nav-link.dropdown-toggle').attr('aria-expanded', true);
-    } else {
-      $(this).removeClass(' show');
-      $('.dropdown-menu.dropdown-menu-end').removeClass(' show');
-      $('.nav-link.dropdown-toggle').attr('aria-expanded', false);
+    fetch(fileUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            contentElement.innerHTML = data;
+            currentContent = content
+            currentNav.classList.add('active');
+
+            if (content === "projects") {
+                getContentProjects()
+            }
+
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        });
+}
+
+getContent()
+
+function getContentProjects(type = "all") {
+    const row = document.getElementById("row");
+    const activeElement = document.querySelector('.filter.active');
+    const currentNav = document.querySelector('.nav-link.filter.' + type);
+    const fileUrl = `../components/card.html`;
+
+    activeElement.classList.remove('active');
+
+    let contentResult = ``;
+
+    fetch(fileUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then((data) => {
+            var filterProjects = repositories.filter(project => {
+                if (type === "all") {
+                    return project
+                }
+                if (project.visibility === type) {
+                    return project
+                }
+            });
+            filterProjects.forEach(repository => {
+                const card = setCardContent(data, repository);
+                contentResult += card;
+            })
+            row.innerHTML = contentResult;
+            currentNav.classList.add('active');
+        })
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        });
+}
+
+function setCardContent(card, repository) {
+    card = card.replace(new RegExp('_image', 'g'), repository.image);
+    card = card.replace(new RegExp('_name', 'g'), repository.name);
+    card = card.replace(new RegExp('_homepage', 'g'), setLink(repository.homepage, "link"));
+    card = card.replace(new RegExp('_git', 'g'), setLink(repository.url, "github"));
+    card = card.replace(new RegExp('_description', 'g'), repository.description);
+    card = card.replace(new RegExp('_tools', 'g'), setTools(repository.tools));
+
+    return card;
+}
+
+function setLink(url, content) {
+    let result = ``;
+    if (url) {
+        result += `<span
+            class="badge rounded text-bg-light link-homepage"
+            onclick="openURL('${url}')">
+            <i class="bi bi-${content}"></i>
+        </span>`;
     }
-  });
-});
-
-//Get the button
-let mybutton = document.getElementById('toTop');
-
-// When the user scrolls down 500px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-    mybutton.style.display = 'block';
-  } else {
-    mybutton.style.display = 'none';
-  }
+    return result;
 }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+function setTools(tools) {
+    let result = ``;
+    if (tools) {
+        tools.forEach(tag => {
+            result += `<span class="badge rounded-pill mb-2 tools">${tag}</span>`;
+        });
+    }
+    return result;
 }
 
-$('img').attr("draggable", false);
-
-function windowMatches(x) {
-  if (x.matches) {
-    $('#college1').show();
-    $('#college2').hide();
-    $('.div-about').css({
-      'padding-left': '8vw',
-      'padding-right': '8vw'
-    });
-  } else {
-    $('#college1').hide();
-    $('#college2').show();
-    $('.div-about').removeAttr('style');
-  }
+function openURL(url) {
+    if (url) {
+        window.open(url, '_blank');
+    }
 }
-let x = window.matchMedia("(max-width: 767px)");
-windowMatches(x);
-x.addListener(windowMatches);
 
-window.addEventListener('scroll', (e) => {
-  let value = window.scrollY;
-  $('#parallax').css('transform', `translateY(${value * 0.4}px)`);
-  $('#path-1').css('transform', `translateY(${value * 0.1}px)`);
-  $('#path-2').css('transform', `translateY(${value * 0.05}px)`);
-});
+function filterProjects(type) {
+    getContentProjects(type)
+}
