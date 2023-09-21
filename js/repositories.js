@@ -7,7 +7,7 @@ let repositories = [
         "homepage": "https://sinta.sumedangkab.go.id/",
         "image": `${host}/img/projects/253876530.png`,
         "url": null,
-        "tools": ["Backpack", "Laravel 10", "SQL", "Bootstrap", "JQuery"],
+        "tools": ["Backpack", "Laravel 10", "MySQL", "Bootstrap", "JQuery"],
         "visibility": "private"
     },
     {
@@ -37,7 +37,7 @@ let repositories = [
         "homepage": "https://next-note-alfaz86.vercel.app",
         "image": `${host}/img/projects/679257556.png`,
         "url": "https://github.com/alfaz86/next-note",
-        "tools": ["Next.js (8.19.2)", "TypeScript", "Tailwindcss"],
+        "tools": ["Next.js (8.19.2)", "TypeScript", "Tailwindcss", "JSON Server"],
         "visibility": "public"
     },
     {
@@ -47,7 +47,7 @@ let repositories = [
         "homepage": "https://cms.gadaiexpress.id/",
         "image": `${host}/img/projects/735380461.png`,
         "url": null,
-        "tools": ["Laravel 8", "PHP", "SQL", "Bootstrap", "JQuery"],
+        "tools": ["Laravel 8", "PHP", "MySQL", "Bootstrap", "JQuery"],
         "visibility": "private"
     },
     {
@@ -67,7 +67,7 @@ let repositories = [
         "homepage": "https://pwa-app-service.000webhostapp.com/",
         "image": `${host}/img/projects/578866482.png`,
         "url": "https://github.com/alfaz86/pwa-app-service",
-        "tools": ["PWA", "Native PHP", "SQL"],
+        "tools": ["PWA", "Native PHP", "MySQL"],
         "visibility": "public"
     },
     {
@@ -77,7 +77,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/579651000.png`,
         "url": "https://github.com/alfaz86/java-cd-music",
-        "tools": ["Java", "SQL"],
+        "tools": ["Java", "MySQL"],
         "visibility": "public"
     },
     {
@@ -87,7 +87,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/665437821.png`,
         "url": null,
-        "tools": ["Laravel 8", "Raja Ongkir", "Bootstrap", "SQL"],
+        "tools": ["Laravel 8", "Raja Ongkir", "Bootstrap", "MySQL"],
         "visibility": "private"
     },
     {
@@ -97,7 +97,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/876123339.png`,
         "url": null,
-        "tools": ["Laravel 8", "Bootstrap", "SQL"],
+        "tools": ["Laravel 8", "Bootstrap", "MySQL"],
         "visibility": "private"
     },
     {
@@ -107,7 +107,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/538587338.png`,
         "url": "https://github.com/alfaz86/next-ongkir",
-        "tools": ["Next.js", "JavaScript", "SQL", "Tailwindcss"],
+        "tools": ["Next.js", "JavaScript", "MySQL", "Tailwindcss"],
         "visibility": "public"
     },
     {
@@ -117,7 +117,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/574727687.png`,
         "url": "https://github.com/alfaz86/laravel-cafe",
-        "tools": ["Laravel 8", "SQL"],
+        "tools": ["Laravel 8", "MySQL"],
         "visibility": "public"
     },
     {
@@ -127,7 +127,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/570374343.png`,
         "url": "https://github.com/alfaz86/laravel-note",
-        "tools": ["Laravel 8", "CKEditor4", "SQL"],
+        "tools": ["Laravel 8", "Trix editor", "MySQL"],
         "visibility": "public"
     },
     {
@@ -137,7 +137,7 @@ let repositories = [
         "homepage": null,
         "image": `${host}/img/projects/889640091.png`,
         "url": null,
-        "tools": ["Laravel (8.83.27)", "SQL", "Bootstrap"],
+        "tools": ["Laravel (8.83.27)", "MySQL", "Bootstrap"],
         "visibility": "private"
     },
     {
