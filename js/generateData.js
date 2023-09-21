@@ -19,6 +19,7 @@
 function formatData(projects) {
     const currentRootURL = `${window.location.protocol}//${window.location.host}`;
     projects.forEach(project => {
+        const exists = repositories.some(repo => repo.id === project.id);
         const format = {
             id: project.id,
             name: project.name,
@@ -29,7 +30,9 @@ function formatData(projects) {
             tools: [],
             visibility: project.visibility
         }
-        repositories.push(format);
+        if (!exists) {
+            repositories.push(format);
+        }
     });
     return repositories;
 }
