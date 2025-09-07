@@ -16,7 +16,9 @@ fetch(sheetUrl)
             image: row.c[4]?.v,
             url: row.c[5]?.v,
             tools: row.c[6]?.v.split(', '),
-            visibility: row.c[7]?.v
+            visibility: row.c[7]?.v,
+            android_download: row.c[8]?.v,
+            ios_download: row.c[9]?.v
         }));
     })
     .catch(error => console.error('Error fetching data:', error));
