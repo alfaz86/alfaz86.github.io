@@ -66,6 +66,7 @@ function getContentProjects(type = "all") {
                 contentResult += card;
             })
             row.innerHTML = contentResult;
+            initTooltips();
             currentNav.classList.add('active');
         })
         .catch((error) => {
@@ -76,21 +77,29 @@ function getContentProjects(type = "all") {
 function setCardContent(card, repository) {
     card = card.replace(new RegExp('_image', 'g'), repository.image);
     card = card.replace(new RegExp('_name', 'g'), repository.name);
-    card = card.replace(new RegExp('_homepage', 'g'), setLink(repository.homepage, "link"));
-    card = card.replace(new RegExp('_git', 'g'), setLink(repository.url, "github"));
-    card = card.replace(new RegExp('_description', 'g'), repository.description);
+    card = card.replace(new RegExp('_homepage', 'g'), setLink(repository.homepage, "globe2", "Visit Website"));
+    card = card.replace(new RegExp('_git', 'g'), setLink(repository.url, "github", "Visit GitHub Repository"));
+    card = card.replace(
+        new RegExp('_description', 'g'),
+        repository.description.replace(/\n/g, '<br>')
+    );
     card = card.replace(new RegExp('_tools', 'g'), setTools(repository.tools));
+    card = card.replace(new RegExp('_android', 'g'), setLink(repository.android_download, "android", "Visit Android Download"));
+    card = card.replace(new RegExp('_ios', 'g'), setLink(repository.ios_download, "apple", "Visit iOS Download"));
 
     return card;
 }
 
-function setLink(url, content) {
+function setLink(url, icon, tooltipText = "") {
     let result = ``;
     if (url) {
         result += `<span
-            class="badge rounded text-bg-light link-homepage"
+            class="badge rounded border text-bg-light link-homepage"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            data-bs-title="${tooltipText}"
             onclick="openURL('${url}')">
-            <i class="bi bi-${content}"></i>
+                <i class="bi bi-${icon}"></i>
         </span>`;
     }
     return result;
@@ -114,4 +123,9 @@ function openURL(url) {
 
 function filterProjects(type) {
     getContentProjects(type)
+}
+
+function initTooltips() {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
 }
