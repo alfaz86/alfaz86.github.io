@@ -127,5 +127,5 @@ function filterProjects(type) {
 
 function initTooltips() {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
+    [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
 }
